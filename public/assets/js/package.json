@@ -1,0 +1,10 @@
+{
+  "name": "phalcon-bootstrap",
+  "version": "0.0.1",
+  "description": "Bootstrapping for a PhalconPHP project",
+  "devDependencies": {
+  },
+  "dependencies": {
+  },
+  "scripts": {}
+}

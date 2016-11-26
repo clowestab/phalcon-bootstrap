@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<?=$this->tag->getTitle()?>
+		<?=$this->mtag->getMetaDescription()?>
+		<?=$this->mtag->getMetaRobots()?>
+		<?=$this->mtag->getCanonicalLink()?>
+		<?=$this->mtag->getLinkRel()?>
+		<?=$this->tag->stylesheetLink("/build/css/concat/initial.css")?>
+
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no"/>
+
+		<?=$this->mtag->getFacebookGraphTags()?>
+		<?=$this->mtag->getTwitterCardTags()?>
+	</head>
+
+	<body>
+
+		<div id="wrap">
+
+			<div id="header">
+				
+			</div>
+
+			<div id="content">
+				
+				<?=$this->getContent()?>
+			</div>
+
+			<div id="footer">
+				
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			function downloadJSAtOnload() {
+
+				console.log("downloading");
+
+				<?php if (isset($javascript)) : ?>
+
+					var element = document.createElement("script");
+					element.src = "/build/js/browser/concat/<?=$javascript?>-min.js";
+					document.body.appendChild(element);
+				
+				<?php endif; ?>
+
+				var element = document.createElement("link");
+				element.href = "/build/css/concat/additional.css";
+				element.rel = "stylesheet";
+				document.body.appendChild(element);
+			}
+
+			if (window.addEventListener) {
+
+				window.addEventListener("load", downloadJSAtOnload, false);
+			
+			} else if (window.attachEvent) {
+			
+				window.attachEvent("onload", downloadJSAtOnload);
+			
+			} else {
+			
+				window.onload = downloadJSAtOnload;
+			}
+		</script>
+	</body>
+</html>
